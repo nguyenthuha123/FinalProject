@@ -1,0 +1,32 @@
+<h1>User page</h1>
+<table class="table">
+    <thead>
+           <button><a href="/auth/register">Add new user</a></button>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">User</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Department</th>
+            <th>Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {{#each userList}}
+        <tr>
+            <th scope="row">
+            <td>{{username}}</td>
+            <td>{{email}}</td>
+            <td>{{role}}</td>
+            <td>{{department.name}}</td>
+            <td>
+                <button><a href="/account/edit/{{_id}}"><i class="fas fa-edit"></i>Edit</a></button>
+                <button><a href="/account/delete/{{_id}}"><i class="fa fa-trash" aria-hidden="true"></i>delete</a></button>
+            </td>
+            </th>
+         
+        </tr>
+           {{/each}}
+    </tbody>
+</table>

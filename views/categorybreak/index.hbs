@@ -1,0 +1,26 @@
+<h1>Category breake page</h1>
+<button> <a href="/categorybreak/add"><i class="fa-light fa-circle-plus"></i>Add</a></button>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Type of leave</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    {{#each typeleaveList}}
+      <tr>
+         <th scope="row"></th>
+         <td>{{name}}</td>
+         <td>{{description}}</td>
+          <td>
+                <button><a href="/categorybreak/edit/{{_id}}"><i class="fas fa-edit"></i>Edit</a></button>
+                <button><a href="/categorybreak/delete/{{_id}}"><i class="fa fa-trash" aria-hidden="true"></i>delete</a></button>
+            </td>
+      </tr>
+    {{/each}} 
+    </tbody>
+</table>

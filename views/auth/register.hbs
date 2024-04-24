@@ -1,0 +1,72 @@
+
+ <form class="modal-content animate"  method="post" onsubmit="return checkPass();" action="/auth/register">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="/images/free-avatar-icon-10.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id="username" require>
+      
+          {{#if InputErrors.username}}
+          <div class="error">
+            {{ InputErrors.username}}
+          </div>
+          {{/if }}
+          
+          <br><br>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter email" name="email" id="email" require>
+
+        {{#if InputErrors.email}}
+          <div class="error">
+            {{ InputErrors.email}}
+          </div>
+        {{/if }}
+    
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id="password" require>
+
+        <span id="retype_error" class="error"></span>
+
+      <label for="repassword"><b>Confirm Password</b></label>
+      <input type="password" placeholder="Enter repassword" name="repassword" id="retype" required>
+
+        <label for="address"><b>Address:</b></label>
+        <input type="text"  placeholder="Enter Address" name="address" id="address">
+
+       {{#if InputErrors.address}}
+          <div class="error">
+            {{ InputErrors.address}}
+          </div>
+        {{/if }}
+
+    Department: 
+    <select name="department" id="">
+            {{#each departmentList}}
+            <option value="{{_id}}">{{ name }}</option>
+            {{/each}}
+      </select>
+      <br><br>
+        
+        <label for="role"><b>Role:</b></label>
+        <select id="role" name="role" required>
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+            <option value="leader">Leader</option>
+        </select>
+
+      <button type="submit">Register</button>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>

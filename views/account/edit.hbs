@@ -1,0 +1,41 @@
+ <div id="editDialog" class="dialog">
+<form action="" method="post">
+    <h1>Edit user page</h1>
+Username: 
+<input type="text"  name="username" id="username" required
+placeholder="Edit user name" value= "{{ user.username }}">
+  {{#if InputErrors.username}}
+        <div class="error">
+            {{ InputErrors.username}}
+        </div>
+ {{/if }}
+<br><br>
+Email: 
+<input type="text"  name="email" id="email" required
+placeholder="Edit user email" value= "{{ user.email }}">
+  {{#if InputErrors.email}}
+        <div class="error">
+            {{ InputErrors.email}}
+        </div>
+ {{/if }}
+<br><br>
+
+        <label for="role"><b>Role:</b></label>
+        <select id="role" name="role" required >
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+            <option value="leader">Leader</option>
+        </select>
+
+
+    Department: 
+    <select name="department" id="">
+            {{#each departmentList}}
+            <option value="{{_id}}">{{ name }}</option>
+            {{/each}}
+      </select>
+      <br><br>
+<input type="submit" value="Edit">
+</form>
+
+</div>

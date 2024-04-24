@@ -1,0 +1,59 @@
+<h1>Create new leaveform </h1>
+
+<form action="" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="username">Name</label>
+      <input type="text" class="form-control" id="username" value="{{username}}">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" value="{{email}}">
+    </div>
+  </div>
+  <br><br>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Type of leave:</label>
+      <select id="categorybreak" class="form-control">
+        <option selected>choose type of leave...</option>
+        {{#each typeleaveList}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+  <div class="form-group col-md-2">
+    <label for="startdate">Start date</label>
+    <input type="date" class="form-control" name="startdate" id="startdate" ><br>
+  </div>
+ <br></br>
+  <div class="form-group col-md-2">
+    <label for="enddate">End date</label>
+    <input type="date" class="form-control"name="enddate" id="enddate" >
+  </div>
+<br>
+
+   <div class="form-group col-md-6">
+      <label for="">Approved by: </label>
+      <select id="user" class="form-control">
+        <option selected>choose leader ...</option>
+        {{#each leaderList}}
+        <option value="{{_id}}">{{email}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+  <br><br>
+
+  <div>
+      {{!-- <label>Description</label> --}}
+      <input type="description" class="form-control" name="description" id="description" placeholder="enter the reason you want to leave">
+  </div>
+  <br><br>
+  <button type="submit" class="btn btn-primary">Create new</button>
+</form>
+
+

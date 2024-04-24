@@ -1,0 +1,22 @@
+<h1>Add new department</h1>
+
+<form action="" method="post">
+    <input type="text" name="name" id="" required
+    placeholder="enter name department" >
+    {{#if InputErrors.name }}
+    <div class="error">
+        {{ InputErrors.name }}
+    </div>
+    {{/if }}
+    <br><br>
+
+    <input type="submit" value="Add">
+
+    Leader: 
+    <select name="user" id="">
+        {{#each leaderList}}
+            <option value="{{_id}}">{{email}}</option>
+        {{/each}} 
+    </select>
+    
+</form>

@@ -1,0 +1,98 @@
+/* body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+} */
+
+a {
+  color: #00B7FF;
+}
+
+.error{
+  color: red;
+  background-color: yellow;
+} 
+
+ /* {
+  box-sizing: border-box;
+} */
+
+/* body {
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* Style the header */
+/* header {
+  background-color:#00B7FF;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+} */
+
+/* Container for flexboxes */
+/* section {
+  display: -webkit-flex;
+  display: flex;
+} */
+
+/* Style the navigation menu */
+/* nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+} */
+
+/* Style the list inside the menu */
+/* nav ul {
+  list-style-type: none;
+  padding: 0;
+} */
+
+/* Style the content */
+/* article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color:white;
+  padding: 10px;
+} */
+
+/* Style the footer */ */
+/* footer {
+  background-color:#00B7FF;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}  */
+
+
+/* body {
+  color: #000;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: #B0BEC5;
+  background-repeat: no-repeat;
+} */
+
+  
+    /* body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding-top: 100px;
+    }
+    .form-check-label {
+      margin-left: 5px;
+    } */
+
+    /* .form-label {
+      margin-left: -5px; /* Điều chỉnh đầu lề sang trái */
+   /* }  */ */
+
+ body {
+      font-family: Arial, sans-serif;
+  }
