@@ -8,21 +8,18 @@
     <div class="container">
       <label for="username"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="username" id="username" require>
-      
           {{#if InputErrors.username}}
           <div class="error">
             {{ InputErrors.username}}
           </div>
           {{/if }}
-          
           <br><br>
-
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter email" name="email" id="email" require>
+      <input type="email" placeholder="Enter email" name="email" id="email" require>
 
         {{#if InputErrors.email}}
           <div class="error">
-            {{ InputErrors.email}}
+            {{ InputErrors.email}}z
           </div>
         {{/if }}
     
@@ -34,28 +31,10 @@
       <label for="repassword"><b>Confirm Password</b></label>
       <input type="password" placeholder="Enter repassword" name="repassword" id="retype" required>
 
-        <label for="address"><b>Address:</b></label>
-        <input type="text"  placeholder="Enter Address" name="address" id="address">
-
-       {{#if InputErrors.address}}
-          <div class="error">
-            {{ InputErrors.address}}
-          </div>
-        {{/if }}
-
-    Department: 
-    <select name="department" id="">
-            {{#each departmentList}}
-            <option value="{{_id}}">{{ name }}</option>
-            {{/each}}
-      </select>
-      <br><br>
-        
         <label for="role"><b>Role:</b></label>
         <select id="role" name="role" required>
             <option value="admin">Admin</option>
             <option value="employee">Employee</option>
-            <option value="leader">Leader</option>
         </select>
 
       <button type="submit">Register</button>

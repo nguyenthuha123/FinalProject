@@ -9,13 +9,16 @@ var accountRouter = require('./routes/account');
 var authRouter = require('./routes/auth'); 
 var departmentRouter = require('./routes/department'); 
 var docummentRouter = require('./routes/documment'); 
-// var categorybreakRouter = require('./routes/categorybreak');
-var categorybreakRouter = require('./routes/Categorybreak'); 
+var categorybreakRouter = require('./routes/categorybreak');
+var leaveManagementRouter = require('./routes/leaveManagement'); 
+var profileRouter = require('./routes/profile');
 var app = express();
 
 //config bcrypt
 var session = require('express-session'); 
+
 const timeout = 1000000 * 60 * 60 * 24; 
+
 app.use(session({
   secret: "practice_makes_perfect", 
   saveUninitialized: false, 
@@ -37,8 +40,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) =>{
   res.locals.username = req.session.username; 
   res.locals.email = req.session.email; 
-  res.locals.address = req.session.address; 
-  res.locals.department = req.session.department; 
+  res.locals.department =  req.session.department; 
+  res.locals.position = req.session.position; 
+  res.locals.birthdate = req.session.birthdate ; 
+  res.locals.gender = req.session.gender; 
+  res.locals.address =  req.session.address ; 
   res.locals.role = req.session.role;
   next(); 
 })
@@ -48,7 +54,8 @@ app.use('/department', departmentRouter);
 app.use('/account', accountRouter); 
 app.use('/documment', docummentRouter);
 app.use('/categorybreak', categorybreakRouter);
-
+app.use('/leaveManagement', leaveManagementRouter);
+app.use('/profile', profileRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

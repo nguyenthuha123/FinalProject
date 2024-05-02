@@ -9,8 +9,8 @@ var salt = 8;
 
 //create form 
 router.get('/register', async (req, res)=>{
-    const departmentList = await DepartmentModel.find({});
-    res.render('auth/register', {departmentList, layout: 'auth_layout'});
+    // const departmentList = await DepartmentModel.find({});
+    res.render('auth/register', {layout: 'auth_layout'});
 })
 
 //xu li creatw user. 
@@ -22,19 +22,17 @@ router.post('/register',async (req, res) =>{
             username: userRegistration.username,
             email: userRegistration.email, 
             password: hashPassword, 
-            department: userRegistration.department, 
             role: userRegistration.role, 
         }
         await UserModel.create(user); 
         res.redirect('/auth/login'); 
-
     }catch(err){
         if(err.name === 'ValidationError'){
             let InputErrors = {};
             for(let field in err.errors){
                 InputErrors[field] = err.errors[field].message; 
             }
-            res.render('auth/register', {InputErrors, userRegistration});
+            res.render('auth/loginUser', {InputErrors, userRegistration});
         } 
     }
 })
@@ -42,31 +40,58 @@ router.post('/register',async (req, res) =>{
 router.get('/login', async(req, res)=>{
     res.render('auth/login', {layout: 'auth_layout'});
 })
+router.get('/loginUser', async(req, res)=>{
+    res.render('auth/loginUser', {layout: 'auth_layout'});
+})
 
 router.post('/login', async (req, res)=>{
-  
-        var userLogin = req.body; 
-        var user = await UserModel.findOne({email: userLogin.email}); 
-        if(user){
-            var hash = bcrypt.compareSync(userLogin.password, user.password); 
-            if(hash){
-               //create session after login succeed
-                req.session.username = user.username;
-                req.session.email = user.email; 
-                req.session.department = user.department; 
-                req.session.role = user.role; 
-                if(req.session.role =="admin")
-                res.redirect('/admin'); 
-                else if(req.session.role == "employee"){
-                res.redirect('/employee'); 
-                }
-                else{
-                    res.redirect('/leader'); 
-                }
-            } 
+  try{
+    var adminLogin = req.body; 
+    var user = await UserModel.findOne({email: adminLogin.email}); 
+    if(user){
+        var hash = bcrypt.compareSync(adminLogin.password, user.password); 
+        if(hash){
+            req.session.username = user.username;
+            req.session.email = user.email; 
+            req.session.role = user.role; 
+            if(req.session.role =="admin")
+            res.redirect('/admin'); 
+            }
+    }
+  }catch(err){
+    if(err.name === 'ValidationError'){
+        let InputErrors = {};
+        for(let field in err.errors){
+            InputErrors[field] = err.errors[field].message; 
         }
-        else{
-            res.redirect('/auth/login');
+        res.render('/auth/login', {InputErrors, adminLogin});
+    }          
+    }
+})
+
+router.post('/loginUser', async (req, res)=>{
+try{
+    var userLogin = req.body; 
+    var user = await UserModel.findOne({email: userLogin.email}); 
+    if(user){
+        var hash = bcrypt.compareSync(userLogin.password, user.password); 
+        if(hash){
+            req.session.username = user.username;
+            req.session.email = user.email;  
+            req.session.role = user.role; 
+            if(req.session.role == "employee"){
+            res.redirect('/employee'); 
+            }
+        } 
+    }
+}catch(err){
+        if(err.name === 'ValidationError'){
+            let InputErrors = {};
+            for(let field in err.errors){
+                InputErrors[field] = err.errors[field].message; 
+            }
+            res.render('auth/loginUser', {InputErrors, userLogin});
+        } 
     }
 })
 

@@ -58,15 +58,48 @@ body, html {
   margin-bottom: 10px;
   line-height: 1; 
 }
+.sidebar ul li a:hover {
+  color:#333;
+  background:deepskyblue;
+  outline: none;
+  position: relative;
+  background-color: deepskyblue;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px; 
+}
+
+/* .sidebar a:hover::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 100%;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 20px 0 0 deepskyblue ;
+}
+
+.sidebar  a:hover::before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: 38px;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -20px 0 0  deepskyblue ;
+}  */
 
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
 
-.sidebar ul li a:hover {
+/* .sidebar ul li a:hover {
   background-color:aqua;
-}
+} */
 
 .content{
 
@@ -136,4 +169,3 @@ a:link{
   text-decoration:none;
 }    
 
-/* //edit dialog */

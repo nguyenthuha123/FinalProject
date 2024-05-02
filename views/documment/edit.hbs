@@ -1,0 +1,69 @@
+<h1>Edit form</h1>
+<form action="/documment/edit" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label for="username"> Username: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="employeeName" id="employeeName" required value= "{{form.employeeName}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="email"> Email: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="employeeEmail" id="employeeEmail" required value= "{{form.employeeEmail}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="c">Deparment</label>
+    </div>
+    <div class="col-75">
+      <select id="department" name="department" value= "{{form.department}}">
+        <option value="it">IT</option>
+        <option value="hr">HR</option>
+        <option value="marketing">Marketing</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-25">
+      <label for="categorybreak">Type of leave</label>
+    </div>
+    <div class="col-75">
+      <select id="" name="categorybreak" value= "{{form.categorybreak}}">
+         {{#each typeleaveList}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}} 
+      </select>
+    </div>
+  </div>
+
+<div class="form-inline" >
+<div class="form-group">
+    <label for="startdate">Start date:</label>
+    <input type="date" class="form-control" name="startdate" id="startdate" value= "{{form.startdate}}">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Endate:</label>
+    <input type="date" class="form-control"name="enddate" id="enddate" value= "{{form.enddate}}">
+  </div>
+</div>
+  
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">Description</label>
+    </div>
+    <div class="col-75">
+        <textarea id="description" name="description" placeholder="Write something.." style="height:200px">{{form.description}}</textarea>
+  </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <input type="submit"  value="Edit">
+  </div>
+  </form>

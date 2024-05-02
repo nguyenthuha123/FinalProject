@@ -1,0 +1,44 @@
+<h1>This leave management homepage</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">No</th>
+            {{!-- <th scope="col">Username</th>  --}}
+            <th scope="col">Email</th>
+            <th scope="col">Department</th>
+            <th scope="col">Type of leave</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th> 
+            <th scope="col">Description</th> 
+            <th scope="col">Status</th> 
+            <th scope="col">Reason</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data.formleaves}}
+        <tr>
+            <th scope="row"></th>
+            {{!-- <td>{{employeeName}}</td> --}}
+            <td>{{employeeEmail}}</td>
+            <td>{{department}}</td>
+            <td>{{categorybreak.name}}</td>
+            <td>{{startdate}}</td>
+            <td>{{enddate}}</td>
+            <td>{{description}}</td>
+            <td>{{status}}</td>
+            <td>{{status}}</td>
+            
+            {{!-- <td>{{leader.email}}</td> --}}
+            <td>
+                <button><a href="/leaveManagement/detail/{{_id}}"><i class="fas fa-edit"></i>Detail</a></button>
+                {{!-- <button><a href="/leaveManagement/approved/{{_id}}"><i class="fas fa-edit"></i>Approved</a></button>
+                <button><a href="/leaveManagement/rejected/{{_id}}"><i class="fa fa-trash" aria-hidden="true"></i>Rejected</a></button> --}}
+                 <input type="button" value="Click Me" onclick="getValue();" />
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+

@@ -1,4 +1,4 @@
-
+import Chart from 'chart.js/auto'
   // Get the modal
 var modal = document.getElementById('id01');
 
@@ -43,20 +43,28 @@ editForm.addEventListener('submit', (e) => {
   editDialog.classList.remove('active');
 });
 
-//user layout dropdown for form leave
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-//search for hompage user
+//pie chart
+  // Dữ liệu biểu đồ
+  var data = {
+    labels: ["Red", "Blue", "Yellow"],
+    datasets: [{
+        data: [10, 20, 30],
+        backgroundColor: ["red", "blue", "yellow"]
+    }]
+};
+// Tùy chọn biểu đồ
+var options = {
+    // Thêm cấu hình tùy chỉnh nếu cần thiết
+};
+
+// Lấy thẻ canvas
+var ctx = document.getElementById('myPieChart').getContext('2d');
+
+// Tạo biểu đồ tròn
+var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+});
 
 

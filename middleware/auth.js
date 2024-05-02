@@ -15,6 +15,14 @@ const checkAdminSession = (res, req, next)=>{
     }
 }
 
+const checkUserSession = (res, req, next)=>{
+    if(req.session.username && req.session.role == 'employee'){
+        next();
+    } else{
+        res.redirect('/auth/login');
+    }
+}
+
 const checkMultipleSession = (allowRoles) => (req, res, next) =>{
    if(req.session.username && allowRoles.includes(req.session.role)){
     next();
@@ -27,5 +35,6 @@ const checkMultipleSession = (allowRoles) => (req, res, next) =>{
 module.exports = {
     checkLoginSession,
     checkAdminSession, 
-    checkMultipleSession 
+    checkMultipleSession, 
+    checkUserSession
 }

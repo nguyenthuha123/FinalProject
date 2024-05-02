@@ -1,59 +1,83 @@
-<h1>Create new leaveform </h1>
-
-<form action="" method="post">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="username">Name</label>
-      <input type="text" class="form-control" id="username" value="{{username}}">
+<h1>create new form</h1>
+ <div class="alert alert-success">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+<form action="/documment/add" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label for="username"> Username: </label>
     </div>
-
-    <div class="form-group col-md-6">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" value="{{email}}">
+    <div class="col-75">
+       <input type="text" name="employeeName" id="employeeName" required value="{{username}}">
     </div>
   </div>
-  <br><br>
+  <div class="row">
+    <div class="col-25">
+      <label for="email"> Email: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="employeeEmail" id="employeeEmail" required value="{{email}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="c">Deparment</label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="department" id="department" required value="{{department}}">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-25">
+      <label for="position"> Position: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="position" id="position" required value="{{position}}">
+    </div>
+  </div>
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="">Type of leave:</label>
-      <select id="categorybreak" class="form-control">
-        <option selected>choose type of leave...</option>
-        {{#each typeleaveList}}
+    <div class="row">
+    <div class="col-25">
+      <label for="categorybreak">Type of leave</label>
+    </div>
+    <div class="col-75">
+      <select id="" name="categorybreak">
+         {{#each typeleaveList}}
         <option value="{{_id}}">{{name}}</option>
-        {{/each}}
+        {{/each}} 
       </select>
     </div>
-
-  <div class="form-group col-md-2">
-    <label for="startdate">Start date</label>
-    <input type="date" class="form-control" name="startdate" id="startdate" ><br>
   </div>
- <br></br>
-  <div class="form-group col-md-2">
-    <label for="enddate">End date</label>
+
+<div class="form-inline" >
+<div class="form-group">
+    <label for="startdate">Start date:</label>
+    <input type="date" class="form-control" name="startdate" id="startdate" >
+  </div>
+  <div class="form-group">
+    <label for="pwd">Endate:</label>
     <input type="date" class="form-control"name="enddate" id="enddate" >
   </div>
-<br>
-
-   <div class="form-group col-md-6">
-      <label for="">Approved by: </label>
-      <select id="user" class="form-control">
-        <option selected>choose leader ...</option>
-        {{#each leaderList}}
-        <option value="{{_id}}">{{email}}</option>
-        {{/each}}
-      </select>
+</div>
+  <br>
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">Description</label>
     </div>
+    <div class="col-75">
+      <textarea id="description" name="description" placeholder="Write something.." style="height:100px"></textarea>
+    </div>
+       {{#if InputErrors.description}}
+          <div class="error">
+            {{ InputErrors.description}}
+          </div>
+     {{/if}}
   </div>
-  <br><br>
 
-  <div>
-      {{!-- <label>Description</label> --}}
-      <input type="description" class="form-control" name="description" id="description" placeholder="enter the reason you want to leave">
+  <br>
+
+  <div class="row">
+    <input type="submit" value="Submit">
   </div>
-  <br><br>
-  <button type="submit" class="btn btn-primary">Create new</button>
-</form>
-
-
+  </form>

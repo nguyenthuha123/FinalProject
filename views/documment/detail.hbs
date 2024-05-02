@@ -1,0 +1,81 @@
+<h1>create new form</h1>
+ <div class="alert alert-success">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+<form action="/documment/detail" method="">
+  <div class="row">
+    <div class="col-25">
+      <label for="username"> Username: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="employeeName" id="employeeName" required value="{{username}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="email"> Email: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="employeeEmail" id="employeeEmail" required value="{{email}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="c">Deparment</label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="department" id="department" required value="{{department}}">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-25">
+      <label for="position"> Position: </label>
+    </div>
+    <div class="col-75">
+       <input type="text" name="position" id="position" required value="{{position}}">
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-25">
+      <label for="categorybreak">Type of leave</label>
+    </div>
+    <div class="col-75">
+      <select id="" name="categorybreak">
+         {{#each typeleaveList}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}} 
+      </select>
+    </div>
+  </div>
+
+<div class="form-inline" >
+<div class="form-group">
+    <label for="startdate">Start date:</label>
+    <input type="date" class="form-control" name="startdate" id="startdate" value="{{startdate}}" >
+  </div>
+  <div class="form-group">
+    <label for="pwd">Endate:</label>
+    <input type="date" class="form-control"name="enddate" id="enddate" value="{{enddate}}">
+  </div>
+</div>
+  
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">Description</label>
+    </div>
+    <div class="col-75">
+      <textarea id="description" name="description" placeholder="Write something.." style="height:200px" aria-valuetext="{{description}}" ></textarea>
+    </div>
+  </div>
+   {{#if InputErrors.description}}
+          <div class="error">
+            {{ InputErrors.description}}
+          </div>
+     {{/if }}
+  <br>
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>

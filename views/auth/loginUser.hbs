@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel='stylesheet' href='/stylesheets/userstyle.css' />
-</head>
 
-<body>
-  <div class="container">
+<form method="post"  action="/auth/loginUser">
+<div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
@@ -16,11 +8,11 @@
             <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
             <form>
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
                 <label for="floatingPassword">Password</label>
               </div>
 
@@ -51,6 +43,8 @@
       </div>
     </div>
   </div>
-</body>
+{{!-- </body>
 
-</html>
+</html> --}}
+  </form>
+  

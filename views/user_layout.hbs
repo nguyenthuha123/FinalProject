@@ -13,62 +13,28 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
   <link rel='stylesheet' href='/stylesheets/userstyle.css' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="/javascripts/script.js"></script>   
 </head>
 
 <body>
-
 <div class="sidebar">
-
      <div class="avatar">
        <img src="/images/free-avatar-icon-10.jpg" alt="Avatar" >
        {{!-- <i class="fa fa-camera" aria-hidden="true"></i> --}}
         <a href="/profile"><h4>hi, {{email}}</h4></a> 
     </div>
-
   <ul>
-    <a href="/employee"><i class="fa fa-home" aria-hidden="true"></i> Homepage</a>
+<a href="/employee"><i class="fa fa-home" aria-hidden="true"></i> Homepage</a>
 <a href="/documment"><i class="fa fa-file" aria-hidden="true"></i>Form leave</a>
 <a href="/leavetrask"><i class="fa fa-trash" aria-hidden="true"></i>Leave trask</a>
 <a href="/history"><i class="fa fa-history" aria-hidden="true"></i> History</a>
-<a href="/profile"><i class="fa fa-user" aria-hidden="true"></i> My profile</a></ul>
+<a href="/profile"><i class="fa fa-user" aria-hidden="true"></i> My profile</a>
+</ul>
 </div>
 
 <div class="content">
-  {{!-- search --}}
- <div class="container h-100">
-      <div class="d-flex justify-content-center h-100">
-        <div class="search">
-          <input class="search_input" type="text" name="" placeholder="Search here...">
-          <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card text-center mb-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card text-center mb-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card text-center mb-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
   {{{body}}}
 </div>
 

@@ -1,81 +1,124 @@
 var express = require('express');
 const FormleaveModel = require('../models/FormleaveModel');
-const CategoryBreakModel = require('../models/CategorybreakModel'); 
-const UserModel = require('../models/UserModel'); 
+const CategoryBreakModel = require('../models/CategorybreakModel');
+const UserModel = require('../models/UserModel');
 var router = express.Router();
+const axios = require('axios');
 
-//get all user
-router.get('/',  async(req, res) => {
+// //get all formleave
+router.get('/', async (req, res) => {
     try {
-        const formleaveList = await  FormleaveModel.find({}).populate('user').populate('categorybreak');
-        res.render('documment/index', {formleaveList, layout: 'user_layout' });
+        const formleavelist = await FormleaveModel.find({}).populate('categorybreak');
+        res.render('documment/index', {
+            formleavelist,
+            layout: 'user_layout'
+        });
     } catch (error) {
         res.send(error);
     }
 })
 
-//create document -> form htm css
-//get form add
 router.get('/add', async (req, res) => {
     try {
         const typeleaveList = await CategoryBreakModel.find({});
-        var leaderList = await UserModel.findOne({role: 'leader'});
-        res.render('documment/add', {  typeleaveList, leaderList, layout: 'user_layout' });
+        res.render('documment/add', {
+            typeleaveList,
+            layout: 'user_layout'
+        });
     } catch (error) {
         res.send(error);
     }
 });
 
-// xu li su kien add
-router.post('/add' , async(req, res) => {
-    try{
-        var  documment= req.body; 
-        
+router.post('/add', async(req, res) => {
+    try {
+        var documment = req.body;
+        documment.status = "appending";
         await FormleaveModel.create(documment); 
-        res.redirect("/documment"); 
-    }catch(err){
-        if(err.name === 'ValidationError'){
+        // console.log(documment);
+        res.redirect("/documment");
+    } catch (err) {
+        if (err.name === 'ValidationError') {
             let InputErrors = {};
-            for(let field in err.errors){
-                InputErrors[field] = err.errors[field].message; 
+            for (let field in err.errors) {
+                InputErrors[field] = err.errors[field].message;
             }
-            res.render('documment/add', {InputErrors, documment});
-        } 
-    } 
+            console.log(err); 
+            res.render('documment/add', {InputErrors,  documment});
+        }
+    }
+});
+
+
+// trong form chưa: typeleave, leader, department. 
+router.get('/edit/:id', async (req, res) => {
+    var id = req.params.id;
+    var typeleaveList = await CategoryBreakModel.find({});
+    var documment = await FormleaveModel.findByIdAndUpdate(id);
+    res.render('documment/edit', {
+        typeleaveList,
+        documment,
+        layout: 'user_layout'
+    });
 })
-//trong form chưa: typeleave, leader, department. 
-router.get('/edit/:id' , async(req, res) => {
-    var id = req.params.id; 
-    var typeleaveList = await CategoryBreakModel.find({}); 
-    var leaderList = await UserModel.findOne({role: 'leader'});
-    // var departmentList = await DepartmentModel.find({}); 
-    var documment = await FormModel.findByIdAndUpdate(id); 
-    res.render('account/edit', {typeleaveList,leaderList,documment,layout: 'user_layout'});
-})
+
+// router.post('/add', async (req, res) => {
+//     var documment = req.body;
+//     console.log(documment);
+//     const {
+//         name,
+//         email,
+//         department, 
+//         position, 
+//         categorybreak, 
+//         startdate,
+//         enddate, 
+//         description
+//     } = req.body;
+//     await FormleaveModel.create({
+//         employeeName: name,
+//         employeeEmail: email,
+//         department: department,
+//         position: position,
+//         categorybreak: categorybreak,
+//         startdate: startdate,
+//         enddate: enddate,
+//         status: "appending",
+//         description: description
+//     });
+
+//     res.redirect("/documment");
+
+// });
 
 //xu li xu kien 
-router.post('/edit/:id', async(req, res)=>{
-    try{
+router.post('/edit/:id', async (req, res) => {
+    try {
         var id = req.params.id;
         var documment = req.body
-        await FormModel.findByIdAndUpdate(id, documment);
-        res.redirect('/documment'); 
+        await FormleaveModel.findByIdAndUpdate(id, documment);
+        res.redirect('/documment');
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            let InputErrors = {};
+            for (let field in err.errors) {
+                InputErrors[field] = err.errors[field].message;
+            }
+            res.render('documment/edit', {
+                InputErrors,
+                documment
+            });
+        }
+        res.send(error);
     }
-    catch(error) {
-                if(err.name === 'ValidationError'){
-                    let InputErrors = {};
-                    for(let field in err.errors){
-                        InputErrors[field] = err.errors[field].message; 
-                    }
-                    res.render('documment/edit', {InputErrors, documment});
-                } 
-                res.send(error); 
-    }  
 })
 
-router.get('/delete/:id', async(req, res) => {
-    var id = req.params.id; 
-    await FormModel.findByIdAndDelete(id); 
-    res.redirect('/documment'); 
+router.get('/delete/:id', async (req, res) => {
+    var id = req.params.id;
+    await FormleaveModel.findByIdAndDelete(id);
+    res.redirect('/documment');
 })
-module.exports = router; 
+
+
+
+module.exports = router;

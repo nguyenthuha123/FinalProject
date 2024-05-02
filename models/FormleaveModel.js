@@ -1,16 +1,18 @@
 var mongoose = require('mongoose'); 
 var FormSchema = mongoose.Schema({
-  usernameEmployee:{
+  employeeName:{
     type: String,
   },
-  email:{
+  employeeEmail:{
     type: String,
   },
-// department:{
-//     type: mongoose.SchemaTypes.ObjectId, 
-//     ref: 'department'
-//   },
-categorybreak: {
+  department:{
+  type: String,
+  },
+  position:{
+    type: String,
+    },
+  categorybreak: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'categorybreak'
   }, 
@@ -21,31 +23,21 @@ categorybreak: {
   enddate: {
     type: String, 
     require: true
-  }, 
-  leader:{
-    type: mongoose.SchemaTypes.ObjectId, 
-    ref: 'user'
+  },  
+  status:{
+    type: String, 
+    enum: ["appending", "approved","rejected"], 
   },
   description:{
     type: String, 
-    minLength: [3, "status can not be smaller than 3 characters"], 
-    maxLength: 30
-  }, 
-  status:{
-    type: String, 
-    require: true, 
-    enum: ["refuse", "accept"],
-    minLength: [3, "status can not be smaller than 3 characters"], 
+    minLength: [3, "description can not be smaller than 3 characters"], 
     maxLength: 30
   },
-  // user:{
-  //   type: mongoose.SchemaTypes.ObjectId, 
-  //   ref: 'user'
-  // },
-  // datelimit:{
-  //   type: mongoose.SchemaTypes.ObjectId, 
-  //   ref: 'datebreaklimit'
-  // },
+  reasonRejected:{
+    type: String, 
+    minLength: [3, "reasonRejected can not be smaller than 3 characters"], 
+    maxLength: 30
+  },
 }); 
 
 var FormModel = mongoose.model('form', FormSchema, 'form' ); 
